@@ -20,5 +20,12 @@ class Spider:
 		Spider.queueFile = Spider.projectName + '/queue.txt'
 		Spider.crawledFile = Spider.projectName + '/crawled.txt'
 		self.boot()
-		self.crawlPage()
+		self.crawlPage('First Spider', Spider.baseURL)
+
+	@staticmethod 
+	def boot():
+		createProjectDir(Spider.projectName)
+		createDataFiles(Spider.projectName, Spider.baseURL)
+		Spider.queue = fileToSet(Spider.queueFile)
+		Spider.crawled = fileToSet(Spider.crawledFile)
 
