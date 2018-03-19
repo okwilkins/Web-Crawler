@@ -20,8 +20,29 @@ def createDataFiles(projectName, baseURL):
 		# Creates empty file for the crawled urls
 		writeFile(crawled, '')
 
+###
+#HOUSE KEEPING FUNCTIONS
+###
+
 # Creates a new file
 def writeFile(path, data):
 	file = open(path, 'w')
 	file.write(data)
 	file.close()
+
+# Add data into an existing file
+def appendFile(path, data):
+	# with statement more compact for opening and closing files
+	with open(path, 'a') as file:
+		file.write(data + '\n')
+
+# Delete the conents of the file
+def deleteFileConents(path):
+	with open(path, 'w'):
+		pass # DO NOTHING
+
+
+
+#Testing functions
+createProjectDir('GitHub')
+createDataFiles('GitHub', 'https://github.com/')
