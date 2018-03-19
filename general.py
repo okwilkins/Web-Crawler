@@ -9,8 +9,8 @@ def createProjectDir(directory):
 
 # Create queue and crawled files (if not created)
 def createDataFiles(projectName, baseURL):
-	queue = projectName + 'queue.txt'
-	crawled = projectName + 'crawled.txt'
+	queue = projectName + '/queue.txt'
+	crawled = projectName + '/crawled.txt'
 
 	if not os.path.isfile(queue):
 		# Creates a file that adds the base website to start the crawling process
