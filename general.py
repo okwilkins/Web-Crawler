@@ -21,7 +21,7 @@ def createDataFiles(projectName, baseURL):
 		writeFile(crawled, '')
 
 ###
-#HOUSE KEEPING FUNCTIONS
+# HOUSE KEEPING FUNCTIONS
 ###
 
 # Creates a new file
@@ -34,14 +34,28 @@ def writeFile(path, data):
 def appendFile(path, data):
 	# with statement more compact for opening and closing files
 	with open(path, 'a') as file:
-		file.write(data + '\n')
+		file.write(data + '\n') # \n makes the text file easier to read for humans
 
 # Delete the conents of the file
-def deleteFileConents(path):
+def deleteFileContents(path):
 	with open(path, 'w'):
 		pass # DO NOTHING
 
+###
 
+# Read a file and convert each line to set items (sets don't allow the same elements to be appened)
+def fileToSet(fileName):
+	results = set()
+	with open(fileName, 'rt') as file: # rt: read text file
+		for line in file:
+			results.add(line.replace('\n', '')) # Replaces the readable \n to nothing, so the computer can read
+	return results
+
+# Iterate through a set, each item will be a new line in the file
+def setToFile(links, file):
+	deleteFileContents(file)
+	for link in sorted(link): # Sorts links into alphabetical order, for readability
+		appendFile(file, link)
 
 #Testing functions
 createProjectDir('GitHub')
