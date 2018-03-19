@@ -54,4 +54,18 @@ class Spider:
 			return set()
 		return finder.pageLinks()
 
+	@staticmethod
+	def addLinksToQueue(links):
+		for url in links:
+			if url in Spider.queueSet:
+				continue
+			if url in Spider.crawledSet:
+				continue
+			if Spider.domainName not in url:
+				continue
+			Spider.queueSet.add(url)
 
+	@staticmethod
+	def updateFiles():
+		setToFile(Spider.queueSet, queueFile)
+		setToFile(Spider.crawledSet, crawledFile)
