@@ -3,14 +3,14 @@ import os
 # Each website you crawl is a seperate project (folder)
 def createProjectDir(directory):
 	#if not used to not overwrite already exisiting project with same name
-	if not os.path.exists(directory):
+	if not os.path.exists('projects/' + directory):
 		print('Creating project: ' + directory)
-		os.makedirs(directory)
+		os.makedirs('projects/' + directory)
 
 # Create queue and crawled files (if not created)
 def createDataFiles(projectName, baseURL):
-	queue = projectName + '/queue.txt'
-	crawled = projectName + '/crawled.txt'
+	queue = 'projects/' + projectName + '/queue.txt'
+	crawled = 'projects/' + projectName + '/crawled.txt'
 
 	if not os.path.isfile(queue):
 		# Creates a file that adds the base website to start the crawling process
@@ -56,7 +56,3 @@ def setToFile(links, file):
 	deleteFileContents(file)
 	for link in sorted(link): # Sorts links into alphabetical order, for readability
 		appendFile(file, link)
-
-#Testing functions
-createProjectDir('GitHub')
-createDataFiles('GitHub', 'https://github.com/')

@@ -17,8 +17,8 @@ class Spider:
 		Spider.projectName = projectName
 		Spider.baseURL = baseURL
 		Spider.domainName = domainName
-		Spider.queueFile = Spider.projectName + '/queue.txt'
-		Spider.crawledFile = Spider.projectName + '/crawled.txt'
+		Spider.queueFile = 'projects/' + Spider.projectName + '/queue.txt'
+		Spider.crawledFile = 'projects/' + Spider.projectName + '/crawled.txt'
 		self.boot()
 		self.crawlPage('First Spider', Spider.baseURL)
 
@@ -35,7 +35,7 @@ class Spider:
 			print(theadName + ' is now crawling: ' + pageURL)
 			print('Queue length: ' + str(len(Spider.queueSet)) + ' | Crawled: ' + str(len(Spider.crawledSet)))
 			Spider.addLinksToQueue(Spider.gatherLinks(pageURL))
-			Spider.queue.remove(pageURL)
+			Spider.queueSet.remove(pageURL)
 			Spider.crawledSet.add(pageURL)
 			Spider.updateFiles()
 
@@ -67,5 +67,5 @@ class Spider:
 
 	@staticmethod
 	def updateFiles():
-		setToFile(Spider.queueSet, queueFile)
-		setToFile(Spider.crawledSet, crawledFile)
+		setToFile(Spider.queueSet, Spider.queueFile)
+		setToFile(Spider.crawledSet, Spider.crawledFile)
