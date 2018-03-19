@@ -29,3 +29,12 @@ class Spider:
 		Spider.queue = fileToSet(Spider.queueFile)
 		Spider.crawled = fileToSet(Spider.crawledFile)
 
+	@staticmethod
+	def crawlPage(theadName, pageURL):
+		if pageURL not in Spider.crawledSet:
+			print(theadName + ' is now crawling: ' + pageURL)
+			print('Queue length: ' + str(len(Spider.queueSet)) + ' | Crawled: ' + str(len(Spider.crawledSet)))
+			Spider.addLinksToQueue(Spider.gatherLinks(pageURL))
+			Spider.queue.remove(pageURL)
+			Spider.crawledSet.add(pageURL)
+			Spider.updateFiles()
