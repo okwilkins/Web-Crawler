@@ -13,6 +13,7 @@ class Spider:
 	crawledFile = ''
 	queueSet = set()
 	crawledSet = set()
+	errorNumber = 0
 
 	def __init__(self, projectName, baseURL, domainName):
 		Spider.projectName = projectName
@@ -34,7 +35,7 @@ class Spider:
 	def crawlPage(theadName, pageURL):
 		if pageURL not in Spider.crawledSet:
 			print(theadName + ' is now crawling: ' + pageURL)
-			print('Queue length: ' + str(len(Spider.queueSet)) + ' | Crawled: ' + str(len(Spider.crawledSet)))
+			print('Queue length: ' + str(len(Spider.queueSet)) + ' | Crawled: ' + str(len(Spider.crawledSet)) + ' | URL Decode Errors: ' + str(Spider.errorNumber))
 			Spider.addLinksToQueue(Spider.gatherLinks(pageURL))
 			Spider.queueSet.remove(pageURL)
 			Spider.crawledSet.add(pageURL)
@@ -52,6 +53,7 @@ class Spider:
 			finder.feed(htmlString)
 		except:
 			print('Error: Can not crawl page!')
+			Spider.errorNumber += 1
 			return set()
 		return finder.pageLinks()
 

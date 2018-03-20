@@ -4,8 +4,8 @@ from spider import Spider
 from domain import *
 from general import *
 
-PROJECT_NAME = 'GitHub' # In Python, to denote a const. var, type it in all caps
-HOMEPAGE = 'https://github.com/'
+PROJECT_NAME = 	input('What would you like to call your project: ')# In Python, to denote a const. var, type it in all caps
+HOMEPAGE = input('Enter the URL of the website you would like to crawl: ')
 DOMAIN_NAME = getDomainName(HOMEPAGE)
 QUEUE_FILE = 'projects/' + PROJECT_NAME + '/queue.txt'
 CRAWLED_FILE = 'projects/' + PROJECT_NAME + '/crawled.txt'
