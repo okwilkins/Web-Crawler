@@ -4,7 +4,7 @@
 
 This program will crawl through entire domains, exporting every link it can find into a txt file.
 
-## Installation/Running the Code
+## Installating/Running the Project
 
 You will not need to download any libraries, plug-in and play by: 
 * Downloading or cloning the repository
