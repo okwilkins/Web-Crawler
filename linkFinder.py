@@ -9,8 +9,7 @@ class LinkFinder(HTMLParser):
 		self.pageURL = pageURL
 		self.links = set()
 
-	def handleStartTag(self, tag, attrs):
-		print('Started Handletag')
+	def handle_starttag(self, tag, attrs):
 		if tag == 'a':
 			for (attribute, value) in attrs:
 				if attribute == 'href':
@@ -18,7 +17,6 @@ class LinkFinder(HTMLParser):
 					self.links.add(url)
 
 	def pageLinks(self):
-		print('PageLinks started')
 		return self.links
 
 	def error(self, message):
