@@ -24,3 +24,4 @@ NUMBER_OF_THREADS = 8
 * Add a tree view for all the links found
 * Reduce the number of decoding errors
 * Fix some URLs completely shutting down threads and ultimately the whole program. This issue is described in detail [here](https://github.com/HomelessSandwich/Web-Crawler/issues/1)
+* Create a nicer output to the console + a GUI
