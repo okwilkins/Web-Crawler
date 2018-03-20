@@ -15,7 +15,7 @@ You will not need to download any libraries, plug-in and play by:
 
 * This program works by reading a webpage and extracting the links to the *queued.txt* file, when gotten round to the program will read further links from the *queued.txt* file and will then dump the then completed (crawled) webpage to the *crawled.txt* file
 * You can try to trawl through massive domains, with many links - this will take a *VERY* long time however
-* Also note that you may need to change the NUMBER_OF_THREADS variable in the [spider.py](https://github.com/HomelessSandwich/Web-Crawler/blob/master/main.py) (line 12) file - this will depend on your operating system
+* Also note that you may need to change the NUMBER_OF_THREADS variable in the [main.py](https://github.com/HomelessSandwich/Web-Crawler/blob/master/main.py) (line 12) file - this will depend on your operating system
 ```python
 NUMBER_OF_THREADS = 8
 ```
