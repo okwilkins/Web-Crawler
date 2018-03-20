@@ -26,8 +26,8 @@ class Spider:
 	def boot():
 		createProjectDir(Spider.projectName)
 		createDataFiles(Spider.projectName, Spider.baseURL)
-		Spider.queue = fileToSet(Spider.queueFile)
-		Spider.crawled = fileToSet(Spider.crawledFile)
+		Spider.queueSet = fileToSet(Spider.queueFile)
+		Spider.crawledSet = fileToSet(Spider.crawledFile)
 
 	@staticmethod
 	def crawlPage(theadName, pageURL):
@@ -44,7 +44,7 @@ class Spider:
 		htmlString = ''
 		try:
 			response = urlopen(pageURL)
-			if response.getheader('Conent-Type') == 'text/html':
+			if 'text/html' in response.getheader('Content-Type'):
 				htmlBytes = response.read()
 				htmlString = htmlBytes.decode('utf-8')
 			finder = LinkFinder(Spider.baseURL, pageURL)
@@ -57,11 +57,9 @@ class Spider:
 	@staticmethod
 	def addLinksToQueue(links):
 		for url in links:
-			if url in Spider.queueSet:
+			if (url in Spider.queueSet) or (url in Spider.crawledSet):
 				continue
-			if url in Spider.crawledSet:
-				continue
-			if Spider.domainName not in url:
+			if Spider.domainName != getDomainName(url):
 				continue
 			Spider.queueSet.add(url)
 

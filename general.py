@@ -53,6 +53,6 @@ def fileToSet(fileName):
 
 # Iterate through a set, each item will be a new line in the file
 def setToFile(links, file):
-	deleteFileContents(file)
-	for link in sorted(link): # Sorts links into alphabetical order, for readability
-		appendFile(file, link)
+    with open(file, 'w') as f:
+        for line in sorted(links):
+            f.write(line + '\n')

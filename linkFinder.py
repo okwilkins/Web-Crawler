@@ -3,7 +3,6 @@ from urllib import parse
 
 class LinkFinder(HTMLParser):
 
-
 	def __init__(self, baseURL, pageURL):
 		super().__init__()
 		self.baseURL = baseURL
@@ -11,6 +10,7 @@ class LinkFinder(HTMLParser):
 		self.links = set()
 
 	def handleStartTag(self, tag, attrs):
+		print('Started Handletag')
 		if tag == 'a':
 			for (attribute, value) in attrs:
 				if attribute == 'href':
@@ -18,6 +18,7 @@ class LinkFinder(HTMLParser):
 					self.links.add(url)
 
 	def pageLinks(self):
+		print('PageLinks started')
 		return self.links
 
 	def error(self, message):
